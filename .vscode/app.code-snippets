@@ -1,0 +1,71 @@
+{
+  "Functional Component": {
+    "scope": "javascriptreact,typescriptreact",
+		"prefix": "fc",
+		"body": [
+			"// import package modules",
+			"import { Col, Row } from 'antd';",
+			"import styled from 'styled-components';",
+			"",
+			"// Import global modules",
+			"",
+			"// Import local modules",
+			"",
+			"export default function ${1:${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}}() {",
+			"  return (",
+			"    <$1Row>",
+			"      <Col>$1</Col>",
+			"    </$1Row>",
+			"  );",
+			"}",
+			"",
+			"const $1Row = styled(Row)(({ theme }) => ({}));"
+		]
+  },
+  "Context Provider": {
+    "scope": "javascript,typescript",
+		"prefix": "cp",
+		"body": [
+			"// import package modules",
+			"import { useState } from 'react';",
+			"",
+			"// Import global modules",
+			"import { createProvider } from '@/utils';",
+			"",
+			"// Import local modules",
+			"",
+			"function use${1:${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}}() {",
+			"  const [count, setCount] = useState<number>(0);",
+			"  ",
+			"  return { count, setCount };",
+			"}",
+			"",
+			"export const { Provider, useContext } = createProvider(use$1);",
+			""
+		]
+  },
+	"Zustand Store": {
+		"scope": "javascript,typescript",
+		"prefix": "zs",
+		"body": [
+			"import { createState } from '@/utils';",
+			"",
+			"interface InitialState {",
+			"  count: number;",
+			"  increase(): void;",
+			"  decrease(): void;",
+			"}",
+			"",
+			"export const useCountStore = createState<InitialState>((set) => ({",
+			"  count: 0,",
+			"  increase() {",
+			"    set((state) => ({ count: state.count + 1 }));",
+			"  },",
+			"  decrease() {",
+			"    set((state) => ({ count: state.count - 1 }));",
+			"  },",
+			"}));",
+			""
+		]
+	}
+}
