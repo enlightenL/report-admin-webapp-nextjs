@@ -53,6 +53,7 @@
     "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-empty-function": "off",
     "import/no-anonymous-default-export": [2, { "allowObject": true }],
     "simple-import-sort/imports": [
       "warn",
