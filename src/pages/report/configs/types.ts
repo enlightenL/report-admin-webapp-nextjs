@@ -3,7 +3,17 @@ export interface ExcelDownloadFormDataType {
   'info-all': boolean;
   info: ('siteId' | 'siteName' | 'siteNickname' | 'pvCapacity' | 'essCapacity' | 'safetyManager' | 'lockingDevice')[];
   'fs-all': boolean;
-  fs: ('operatedDate' | 'expiredDate' | 'siteType' | 'designation' | 'angle' | 'latitude' | 'longitude' | 'altitude' | 'insolation')[];
+  fs: (
+    | 'operatedDate'
+    | 'expiredDate'
+    | 'siteType'
+    | 'designation'
+    | 'angle'
+    | 'latitude'
+    | 'longitude'
+    | 'altitude'
+    | 'insolation'
+  )[];
   'equipment-all': boolean;
   equipment: ('inverterInfo' | 'essInfo' | 'moduleInfo' | 'structureType')[];
   'report-all': boolean;

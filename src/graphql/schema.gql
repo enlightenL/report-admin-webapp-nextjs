@@ -1,3 +1,42 @@
 type Query {
   hello: String!
+  report: [Report]!
+}
+
+type Report {
+  no: Int!
+  siteId: String!
+  siteName: String!
+  name: String!
+  phone: String!
+  pvCapacity: Float
+  essCapacity: Float
+  address: String!
+  writer: String!
+  createdAt: String!
+  status: ReportStatus!
+  requestYn: RequestYN!
+  step: Int!
+  smsSend: SendStatus!
+  smsSendDate: String!
+  emailSend: SendStatus!
+  emailSendDate: String!
+  show: Boolean!
+}
+
+enum RequestYN {
+  Y
+  N
+}
+
+enum ReportStatus {
+  UNWRITTEN
+  WRITING
+  COMPLETED
+}
+
+enum SendStatus {
+  SEND
+  RESEND
+  DISABLED
 }

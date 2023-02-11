@@ -1,26 +1,57 @@
 // import package modules
-import { useState } from 'react';
+import { Suspense, useMemo, useState } from 'react';
+import { dehydrate, DehydratedState, QueryClient, useQuery } from 'react-query';
+import { GetStaticPropsResult } from 'next';
 import { Button, Col, Radio, Row, Select, Space } from 'antd';
 import Title from 'antd/lib/typography/Title';
 import styled from 'styled-components';
 
-import BulkCreateModal from './BulkCreateModal';
 // Import global modules
+import ReportQuery from '@/graphql/queries/getReport.gql';
+import { GetReportQuery } from '@/graphql/schema';
+import getGraphqlQueryFn from '@/hooks/getGraphqlQueryFn';
+
 // Import local modules
+import BulkCreateModal from './BulkCreateModal';
 import { values } from './configs';
 import ExcelDownloadModal from './ExcelDownloadModal';
 import ListTable from './ListTable';
 import SearchOptions from './SearchOptions';
-import useMock from './useMock';
+
+export interface ReportProps {
+  dehydratedState: DehydratedState;
+}
+
+export async function getStaticProps(): Promise<GetStaticPropsResult<ReportProps>> {
+  const client = new QueryClient();
+  await client.prefetchQuery('report', getGraphqlQueryFn<GetReportQuery>(ReportQuery));
+  return {
+    props: {
+      dehydratedState: dehydrate(client),
+    },
+  };
+}
 
 export default function Report() {
   const [openBulkCreateModal, setOpenBulkCreateModal] = useState<boolean>(false);
   const [openExcelDownloadModal, setOpenExcelDownloadModal] = useState<boolean>(false);
   const [count, setCount] = useState<'10' | '50' | '100' | 'all'>('100');
-  const { tableData } = useMock();
+
+  const { data } = useQuery('report', getGraphqlQueryFn<GetReportQuery>(ReportQuery), {
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+  });
+
+  const reportData = useMemo(() => {
+    if (!data) {
+      return [];
+    }
+
+    return data.report;
+  }, [data]);
 
   return (
-    <>
+    <Suspense fallback={<h1>loading...</h1>}>
       <StyledRow
         gutter={[0, 20]}
         justify="space-between"
@@ -44,7 +75,7 @@ export default function Report() {
             size={10}
             align="center"
           >
-            <Title level={5}>총 {tableData.length}개</Title>
+            <Title level={5}>총 {reportData.length}개</Title>
             <Select
               value={count}
               options={[
@@ -90,7 +121,7 @@ export default function Report() {
         </Col>
         <Col span={24}>
           <ListTable
-            data={tableData}
+            data={reportData}
             count={count === 'all' ? null : +count}
           />
         </Col>
@@ -103,7 +134,7 @@ export default function Report() {
         open={openExcelDownloadModal}
         onClose={() => setOpenExcelDownloadModal(false)}
       />
-    </>
+    </Suspense>
   );
 }
 

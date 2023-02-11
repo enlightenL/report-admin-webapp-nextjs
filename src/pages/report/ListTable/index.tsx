@@ -1,7 +1,6 @@
 // import package modules
-import { ComponentType, ElementType, Key, useMemo } from 'react';
+import { ElementType, Key, useMemo } from 'react';
 import { Button, Switch, Table } from 'antd';
-import Title from 'antd/lib/typography/Title';
 import styled from 'styled-components';
 
 // Import global modules

@@ -54,7 +54,9 @@
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-empty-function": "off",
-    "import/no-anonymous-default-export": [2, { "allowObject": true }],
+    "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/require-await": "off",
+    "import/no-anonymous-default-export": "off",
     "simple-import-sort/imports": [
       "warn",
       {

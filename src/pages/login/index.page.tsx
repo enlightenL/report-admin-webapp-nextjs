@@ -1,5 +1,5 @@
 // import package modules
-import { useCallback } from 'react';
+import { ReactNode, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Button, Col, Form, Input, Row } from 'antd';
@@ -7,8 +7,8 @@ import styled from 'styled-components';
 import { v1 } from 'uuid';
 
 // Import global modules
-import ENlightenLogo from '@/assets/enlighten-logo.svg';
-import HeukhyeongImg from '@/assets/흑형.jpeg';
+import ENlightenLogo from '@/assets/images/enlighten-logo.svg';
+import HeukhyeongImg from '@/assets/images/흑형.jpeg';
 import { useAuthStore } from '@/store/auth.state';
 
 // Import local modules
@@ -16,7 +16,14 @@ import { useAuthStore } from '@/store/auth.state';
 export default function Login() {
   const [form] = Form.useForm();
   const router = useRouter();
+  const authToken = useAuthStore((value) => value.authToken);
   const setAuthToken = useAuthStore((value) => value.setAuthToken);
+
+  useEffect(() => {
+    if (authToken) {
+      router.push('/report');
+    }
+  }, [router, authToken]);
 
   const onLogin = useCallback(() => {
     setAuthToken(v1());
@@ -108,6 +115,8 @@ export default function Login() {
     </>
   );
 }
+
+Login.getLayout = (page: ReactNode) => page;
 
 const StyledRow = styled(Row)({
   display: 'flex',

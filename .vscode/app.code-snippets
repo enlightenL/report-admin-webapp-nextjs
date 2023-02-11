@@ -19,7 +19,8 @@
 			"  );",
 			"}",
 			"",
-			"const $1Row = styled(Row)(({ theme }) => ({}));"
+			"const $1Row = styled(Row)(({ theme }) => ({}));",
+			""
 		]
   },
   "Context Provider": {
@@ -44,6 +45,54 @@
 			""
 		]
   },
+	"Next.js getLayout": {
+		"scope": "javascriptreact,typescriptreact",
+		"prefix": "layout",
+		"body": [
+			"${1:${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}}.getLayout = (page: ReactNode) => {",
+			"  return <>{page}</>;",
+			"};",
+			""
+		]
+	},
+	"Next.js getServerSideProps": {
+		"scope": "javascript,typescript",
+		"prefix": "ssprops",
+		"body": [
+			"export async function getServerSideProps() {",
+			"  return {",
+			"    props: {},",
+			"  };",
+			"}",
+			""
+		]
+	},
+	"Next.js getStaticProps": {
+		"scope": "javascript,typescript",
+		"prefix": "stprops",
+		"body": [
+			"export async function getStaticProps() {",
+			"  return {",
+			"    props: {},",
+			"    revalidate: 10,",
+			"  };",
+			"}",
+			""
+		]
+	},
+	"Next.js getStaticPaths": {
+		"scope": "javascript,typescript",
+		"prefix": "stpaths",
+		"body": [
+			"export async function getStaticPaths() {",
+			"  return {",
+			"    paths: [{ params: {} }],",
+			"    fallback: 'blocking',",
+			"  };",
+			"}",
+			""
+		]
+	},
 	"Zustand Store": {
 		"scope": "javascript,typescript",
 		"prefix": "zs",

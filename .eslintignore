@@ -25,3 +25,5 @@ yarn-error.log*
 # configs
 tsconfig.json
 tsconfig.*.json
+
+src/types/styled.d.ts

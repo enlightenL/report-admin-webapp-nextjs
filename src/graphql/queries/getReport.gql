@@ -1,0 +1,22 @@
+query GetReport {
+  report {
+    no
+    siteId
+    siteName
+    name
+    phone
+    pvCapacity
+    essCapacity
+    address
+    writer
+    createdAt
+    status
+    requestYn
+    step
+    smsSend
+    smsSendDate
+    emailSend
+    emailSendDate
+    show
+  }
+}

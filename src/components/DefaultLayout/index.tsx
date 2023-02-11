@@ -10,7 +10,7 @@ import styled from 'styled-components';
 
 // Import local modules
 
-export default function Layout({ children }: PropsWithChildren<{}>) {
+export default function DefaultLayout({ children }: PropsWithChildren<{}>) {
   const router = useRouter();
 
   const onRoute: MenuClickEventHandler = useCallback(

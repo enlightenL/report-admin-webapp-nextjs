@@ -8,12 +8,16 @@ const nextConfig = {
   // experimental: {
   //   appDir: true,
   // },
-  pageExtensions: ['page.js', 'page.jsx', 'page.ts', 'page.tsx', 'api.js', 'api.jsx', 'api.ts', 'api.tsx'],
+  pageExtensions: ['page.js', 'page.jsx', 'page.ts', 'page.tsx', 'api.js', 'api.ts'],
   sassOptions: {
     includePaths: [path.join(__dirname, 'src', 'styles')],
   },
   compiler: {
     styledComponents: true,
+  },
+  images: {
+    loader: 'imgix',
+    path: '/',
   },
   webpack(config) {
     config.module.rules.push({

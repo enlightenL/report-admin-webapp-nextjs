@@ -1,5 +1,5 @@
 // import package modules
-import { DownloadOutlined, FolderAddOutlined, FolderOpenOutlined } from '@ant-design/icons';
+import { DownloadOutlined, FolderOpenOutlined } from '@ant-design/icons';
 import { Button, Col, Modal, Row, Space, Typography } from 'antd';
 import Dragger from 'antd/lib/upload/Dragger';
 import styled from 'styled-components';
