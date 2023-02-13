@@ -12,9 +12,24 @@ export type Scalars = {
   Float: number;
 };
 
+export type LoginPayload = {
+  __typename?: 'LoginPayload';
+  token: Scalars['String'];
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  login: LoginPayload;
+};
+
+export type MutationLoginArgs = {
+  code: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
   hello: Scalars['String'];
+  isAuthenticated: Scalars['Boolean'];
   report: Array<Maybe<Report>>;
 };
 
@@ -56,6 +71,12 @@ export enum SendStatus {
   Resend = 'RESEND',
   Send = 'SEND',
 }
+
+export type LoginMutationVariables = Exact<{
+  code: Scalars['String'];
+}>;
+
+export type LoginMutation = { __typename?: 'Mutation'; login: { __typename?: 'LoginPayload'; token: string } };
 
 export type GetReportQueryVariables = Exact<{ [key: string]: never }>;
 

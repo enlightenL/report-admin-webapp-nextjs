@@ -4,7 +4,6 @@ import { faker } from '@faker-js/faker';
 import { ReportStatus, SendStatus } from '@/graphql/schema';
 
 export const report = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 5000));
   return Array(100)
     .fill(1)
     .map((_, i) => ({

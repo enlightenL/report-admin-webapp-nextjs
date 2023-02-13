@@ -2,7 +2,7 @@
 import { ReactNode, useEffect } from 'react';
 import { Hydrate, QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 import { NextPage } from 'next';
-import { AppProps } from 'next/app';
+import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { useRouter } from 'next/router';
 import { ApolloProvider } from '@apollo/client';
 import { ConfigProvider } from 'antd';
@@ -74,4 +74,8 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       </Hydrate>
     </QueryClientProvider>
   );
+}
+
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+  console.log('metric:', metric);
 }

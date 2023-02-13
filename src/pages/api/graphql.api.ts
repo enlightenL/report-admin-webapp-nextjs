@@ -4,13 +4,13 @@ import {
 } from 'apollo-server-core';
 import { ApolloServer } from 'apollo-server-micro';
 
-// import Mutation from '@/graphql/resolvers/mutations';
+import Mutation from '@/graphql/resolvers/mutations';
 import Query from '@/graphql/resolvers/queries';
 import typeDefs from '@/graphql/schema.gql';
 
 const resolvers = {
   Query,
-  // Mutation,
+  Mutation,
 };
 
 export const config = {

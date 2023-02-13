@@ -1,6 +1,11 @@
 type Query {
   hello: String!
   report: [Report]!
+  isAuthenticated: Boolean!
+}
+
+type Mutation {
+  login(code: String!): LoginPayload!
 }
 
 type Report {
@@ -22,6 +27,10 @@ type Report {
   emailSend: SendStatus!
   emailSendDate: String!
   show: Boolean!
+}
+
+type LoginPayload {
+  token: String!
 }
 
 enum RequestYN {
